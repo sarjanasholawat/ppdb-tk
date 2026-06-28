@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form Pendaftaran | TK Pertiwi I</title>
+  <meta name="description" content="Halaman form pendaftaran peserta didik baru TK Pertiwi I yang dapat dihubungkan ke Google Spreadsheet." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/img/logo-tk-pertiwi.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="form-page">
+  <nav class="navbar page-navbar" aria-label="Navigasi halaman formulir">
+    <a href="index.html" class="brand" aria-label="TK Pertiwi I">
+      <span class="brand-logo-wrap">
+        <img
+          class="brand-logo-img"
+          src="https://drive.google.com/thumbnail?id=1IOHkSdN7VLTc2iw_aQxg-Ow5BWU3UgRm&sz=w512"
+          alt="Logo TK Pertiwi I"
+          onerror="this.onerror=null;this.src='assets/img/logo-tk-pertiwi.svg';"
+        />
+      </span>
+      <span class="brand-text">
+        <strong>TK Pertiwi I</strong>
+        <small>Form Pendaftaran</small>
+      </span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Buka menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#beranda">Beranda</a></li>
+      <li><a href="index.html#profil">Profil</a></li>
+      <li><a href="index.html#pengajar">Pengajar</a></li>
+      <li><a href="index.html#album">Album</a></li>
+      <li><a href="index.html#lokasi">Lokasi</a></li>
+      <li><a href="index.html#download">Download</a></li>
+    </ul>
+  </nav>
+
+  <main class="registration-page section-container">
+    <section class="registration-card standalone-form-card">
+      <div class="registration-info">
+        <p class="eyebrow">Pendaftaran Online</p>
+        <h1>Formulir Pendaftaran Peserta Didik Baru</h1>
+        <p>Silakan isi data calon peserta didik dengan lengkap. Setelah Google Apps Script dihubungkan, data akan otomatis masuk ke Google Spreadsheet sekolah.</p>
+        <div class="note-box">
+          <strong>Catatan:</strong> ganti <code>PASTE_URL_APPS_SCRIPT_DI_SINI</code> pada file <code>assets/js/script.js</code> dengan URL Web App Google Apps Script Anda.
+        </div>
+        <a href="index.html" class="btn btn-light">Kembali ke Website</a>
+      </div>
+
+      <form id="registrationForm" class="form" enctype="multipart/form-data">
+        <div class="form-section-title">Data Calon Peserta Didik</div>
+        <div class="form-row">
+          <label for="namaAnak">Nama Anak</label>
+          <input type="text" id="namaAnak" name="namaAnak" placeholder="Contoh: Aisyah Putri" required>
+        </div>
+
+        <div class="form-row two-col">
+          <div>
+            <label for="tanggalLahir">Tanggal Lahir</label>
+            <input type="date" id="tanggalLahir" name="tanggalLahir" required>
+          </div>
+          <div>
+            <label for="jenisKelamin">Jenis Kelamin</label>
+            <select id="jenisKelamin" name="jenisKelamin" required>
+              <option value="">Pilih</option>
+              <option value="Laki-laki">Laki-laki</option>
+              <option value="Perempuan">Perempuan</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row three-col">
+          <div>
+            <label for="umur">Umur</label>
+            <input type="number" id="umur" name="umur" min="2" max="8" placeholder="Contoh: 5" required>
+          </div>
+          <div>
+            <label for="tinggiBadan">Tinggi Badan (cm)</label>
+            <input type="number" id="tinggiBadan" name="tinggiBadan" min="50" max="150" placeholder="Contoh: 105">
+          </div>
+          <div>
+            <label for="beratBadan">Berat Badan (kg)</label>
+            <input type="number" id="beratBadan" name="beratBadan" min="5" max="60" step="0.1" placeholder="Contoh: 18.5">
+          </div>
+        </div>
+
+        <div class="form-row two-col">
+          <div>
+            <label for="agama">Agama</label>
+            <input type="text" id="agama" name="agama" placeholder="Agama anak">
+          </div>
+          <div>
+            <label for="tahunAjaran">Tahun Ajaran</label>
+            <input type="text" id="tahunAjaran" name="tahunAjaran" placeholder="2026/2027" required>
+          </div>
+        </div>
+
+        <div class="form-section-title">Data Orang Tua/Wali</div>
+<div class="form-row">
+          <label for="namaOrangTua">Nama Orang Tua/Wali</label>
+          <input type="text" id="namaOrangTua" name="namaOrangTua" placeholder="Nama orang tua/wali" required>
+        </div>
+
+        <div class="form-row two-col">
+          <div>
+            <label for="telepon">Nomor WhatsApp</label>
+            <input type="tel" id="telepon" name="telepon" placeholder="08xxxxxxxxxx" required>
+          </div>
+          <div>
+            <label for="pekerjaanOrangTua">Pekerjaan Orang Tua/Wali</label>
+            <input type="text" id="pekerjaanOrangTua" name="pekerjaanOrangTua" placeholder="Contoh: Wiraswasta">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="alamat">Alamat</label>
+          <textarea id="alamat" name="alamat" rows="3" placeholder="Alamat lengkap" required></textarea>
+        </div>
+
+        <div class="form-row">
+          <label for="catatan">Catatan Tambahan</label>
+          <textarea id="catatan" name="catatan" rows="3" placeholder="Contoh: informasi alergi, kebutuhan khusus, atau pesan untuk sekolah"></textarea>
+        </div>
+
+
+        <div class="form-row upload-group">
+          <label>Upload Berkas Pendaftaran</label>
+          <div class="upload-grid">
+            <label class="upload-card" for="pasFoto">
+              <span class="upload-icon">📷</span>
+              <strong>Pas Foto</strong>
+              <small>JPG, PNG, atau PDF</small>
+              <input type="file" id="pasFoto" name="pasFoto" accept="image/*,.pdf">
+            </label>
+            <label class="upload-card" for="kartuKeluarga">
+              <span class="upload-icon">📄</span>
+              <strong>Kartu Keluarga</strong>
+              <small>JPG, PNG, atau PDF</small>
+              <input type="file" id="kartuKeluarga" name="kartuKeluarga" accept="image/*,.pdf">
+            </label>
+            <label class="upload-card" for="aktaKelahiran">
+              <span class="upload-icon">📝</span>
+              <strong>Akta Kelahiran</strong>
+              <small>JPG, PNG, atau PDF</small>
+              <input type="file" id="aktaKelahiran" name="aktaKelahiran" accept="image/*,.pdf">
+            </label>
+          </div>
+          <p class="upload-note">Berkas akan dikirim bersama data pendaftaran. Jika menggunakan Google Apps Script, file akan disimpan ke Google Drive dan linknya masuk ke Spreadsheet.</p>
+        </div>
+
+        
+
+        <button type="submit" class="btn btn-primary form-btn">Kirim Pendaftaran</button>
+        <p id="formMessage" class="form-message" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-label="Contoh pas foto pengajar Ibu Siti">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#1469b8" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#f6c343" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="400" rx="34" fill="url(#bg)"/>
+  <circle cx="248" cy="64" r="36" fill="#fff" opacity=".18"/>
+  <circle cx="44" cy="328" r="54" fill="#fff" opacity=".12"/>
+  <rect x="34" y="38" width="232" height="324" rx="28" fill="#ffffff" opacity=".90"/>
+  <circle cx="150" cy="130" r="55" fill="#f4c7a2"/>
+  <path d="M96 131c7-51 42-75 87-57 22 9 35 31 21 67-11-31-36-34-60-29-17 4-31 10-48 19z" fill="#15324f" opacity=".9"/>
+  <circle cx="130" cy="135" r="5" fill="#15324f"/>
+  <circle cx="170" cy="135" r="5" fill="#15324f"/>
+  <path d="M132 160c13 10 27 10 40 0" fill="none" stroke="#15324f" stroke-width="5" stroke-linecap="round"/>
+  <path d="M78 312c8-58 42-96 72-96s64 38 72 96" fill="#1469b8"/>
+  <path d="M116 218c14 23 54 23 68 0v95h-68z" fill="#f4c7a2"/>
+  <path d="M98 281c32 18 71 18 104 0v52H98z" fill="#ffffff" opacity=".96"/>
+  <text x="150" y="352" text-anchor="middle" font-family="Poppins, Arial" font-size="20" font-weight="700" fill="#15324f">Ibu Siti</text>
+</svg>
