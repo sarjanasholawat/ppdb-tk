@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Admin | TK Pertiwi I</title>
+  <meta name="description" content="Dashboard admin TK Pertiwi I untuk melihat, mengedit, dan mencetak data pendaftaran peserta didik." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/img/logo-tk-pertiwi.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="admin-page">
+  <nav class="navbar page-navbar" aria-label="Navigasi dashboard admin">
+    <a href="index.html" class="brand" aria-label="TK Pertiwi I">
+      <span class="brand-logo-wrap">
+        <img
+          class="brand-logo-img"
+          src="https://drive.google.com/thumbnail?id=1IOHkSdN7VLTc2iw_aQxg-Ow5BWU3UgRm&sz=w512"
+          alt="Logo TK Pertiwi I"
+          onerror="this.onerror=null;this.src='assets/img/logo-tk-pertiwi.svg';"
+        />
+      </span>
+      <span class="brand-text">
+        <strong>TK Pertiwi I</strong>
+        <small>Dashboard Admin</small>
+      </span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Buka menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#beranda">Beranda</a></li>
+      <li><a href="index.html#pengajar">Pengajar</a></li>
+      <li><a href="pendaftaran.html">Form Daftar</a></li>
+      <li><a href="index.html#download">Download</a></li>
+    </ul>
+  </nav>
+
+  <main class="admin-main section-container">
+    <section class="admin-hero">
+      <div>
+        <p class="eyebrow">Dashboard Admin</p>
+        <h1>Kelola Data Pendaftaran TK Pertiwi I</h1>
+        <p>Lihat data masuk, edit informasi peserta didik, cetak formulir, dan atur kop surat serta tanda tangan kepala sekolah.</p>
+      </div>
+      <div class="admin-hero-actions">
+        <button class="btn btn-secondary" id="reloadDataBtn" type="button">Muat Ulang Data</button>
+        <button class="btn btn-primary" id="openPrintSettingsBtn" type="button">Edit Kop & Tanda Tangan</button>
+      </div>
+    </section>
+
+    <section class="admin-login-card" id="adminLoginCard">
+      <div>
+        <h2>Masuk Admin</h2>
+        <p>Gunakan password admin yang dapat diganti pada file <code>assets/js/config.js</code>.</p>
+      </div>
+      <form id="adminLoginForm" class="admin-login-form">
+        <input type="password" id="adminPassword" placeholder="Masukkan password admin" autocomplete="current-password" required />
+        <button class="btn btn-primary" type="submit">Masuk Dashboard</button>
+      </form>
+      <p id="adminLoginMessage" class="form-message" role="status"></p>
+    </section>
+
+    <section class="admin-panel hidden" id="adminPanel">
+      <div class="admin-toolbar">
+        <div>
+          <h2>Data Pendaftaran</h2>
+          <p id="adminStatus">Memuat data...</p>
+        </div>
+        <div class="admin-search-wrap">
+          <input type="search" id="adminSearch" placeholder="Cari nama anak/orang tua/WA..." />
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama Anak</th>
+              <th>Umur</th>
+              <th>Orang Tua/Wali</th>
+              <th>No. WA</th>
+              <th>Tahun Ajaran</th>
+              <th>Berkas</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="registrationsTableBody">
+            <tr><td colspan="8">Belum ada data.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="admin-modal hidden" id="editModal" role="dialog" aria-modal="true" aria-labelledby="editModalTitle">
+    <div class="admin-modal-card">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">Edit Data</p>
+          <h2 id="editModalTitle">Edit Data Pendaftaran</h2>
+        </div>
+        <button class="modal-close" type="button" data-close-modal="editModal">×</button>
+      </div>
+      <form id="editRegistrationForm" class="modal-form"></form>
+    </div>
+  </div>
+
+  <div class="admin-modal hidden" id="printSettingsModal" role="dialog" aria-modal="true" aria-labelledby="printSettingsTitle">
+    <div class="admin-modal-card">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">Pengaturan Cetak</p>
+          <h2 id="printSettingsTitle">Edit Kop Surat & Tanda Tangan</h2>
+        </div>
+        <button class="modal-close" type="button" data-close-modal="printSettingsModal">×</button>
+      </div>
+
+      <form id="printSettingsForm" class="modal-form">
+        <div class="form-row two-col">
+          <div>
+            <label for="schoolNameSetting">Nama Sekolah</label>
+            <input type="text" id="schoolNameSetting" name="schoolName" />
+          </div>
+          <div>
+            <label for="letterSubtitleSetting">Nama Lembaga/Yayasan</label>
+            <input type="text" id="letterSubtitleSetting" name="letterSubtitle" />
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="addressSetting">Alamat Kop Surat</label>
+          <textarea id="addressSetting" name="address" rows="2"></textarea>
+        </div>
+        <div class="form-row two-col">
+          <div>
+            <label for="phoneSetting">Kontak</label>
+            <input type="text" id="phoneSetting" name="phone" />
+          </div>
+          <div>
+            <label for="cityDateSetting">Kota/Tanggal Cetak</label>
+            <input type="text" id="cityDateSetting" name="cityDate" />
+          </div>
+        </div>
+        <div class="form-row two-col">
+          <div>
+            <label for="principalNameSetting">Nama Kepala Sekolah</label>
+            <input type="text" id="principalNameSetting" name="principalName" />
+          </div>
+          <div>
+            <label for="principalNipSetting">NIP/NIY Kepala Sekolah</label>
+            <input type="text" id="principalNipSetting" name="principalNip" />
+          </div>
+        </div>
+        <div class="form-row upload-group compact-upload">
+          <label for="signatureUpload">Upload Gambar Tanda Tangan Kepala Sekolah</label>
+          <input type="file" id="signatureUpload" accept="image/*" />
+          <p class="upload-note">Gunakan file PNG/JPG transparan bila ada. Gambar disimpan di browser admin melalui localStorage.</p>
+          <img id="signaturePreview" class="signature-preview" alt="Preview tanda tangan" />
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-secondary" type="button" id="resetPrintSettingsBtn">Reset Default</button>
+          <button class="btn btn-primary" type="submit">Simpan Pengaturan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <section id="printArea" class="print-area" aria-hidden="true"></section>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
