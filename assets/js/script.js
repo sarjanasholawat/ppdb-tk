@@ -5,7 +5,7 @@ const formMessage = document.getElementById("formMessage");
 const year = document.getElementById("year");
 
 // Ganti dengan URL Web App Google Apps Script Anda.
-const GOOGLE_SCRIPT_URL = (window.TK_CONFIG && window.TK_CONFIG.GOOGLE_SCRIPT_URL) || "PASTE_URL_APPS_SCRIPT_DI_SINI";
+const GOOGLE_SCRIPT_URL = (window.TK_CONFIG && window.TK_CONFIG.GOOGLE_SCRIPT_URL) || "https://script.google.com/macros/s/AKfycbx0CmMFYDNLnatLf38ijGBgawo_A1H2AujclL4hmiMy3WdfnkuPzw07JZkrUOwrOeU/exec";
 const MAX_FILE_SIZE_MB = 5;
 
 if (year) {
