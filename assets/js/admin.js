@@ -1,4 +1,4 @@
-const ADMIN_SCRIPT_URL = (window.TK_CONFIG && window.TK_CONFIG.GOOGLE_SCRIPT_URL) || "PASTE_URL_APPS_SCRIPT_DI_SINI";
+const ADMIN_SCRIPT_URL = (window.TK_CONFIG && window.TK_CONFIG.GOOGLE_SCRIPT_URL) || "https://script.google.com/macros/s/AKfycbxQj0JzfGeEk54j5W_BJFb1t7UDcqombknKRNHvrI01zm36SC9q53_QcvOYa9y1pMNKBg/exec";
 const ADMIN_PASSWORD = (window.TK_CONFIG && window.TK_CONFIG.ADMIN_PASSWORD) || "admin123";
 const ADMIN_SAMPLE_KEY = "tk_pertiwi_sample_registrations";
 const PRINT_SETTINGS_KEY = "tk_pertiwi_print_settings";
